@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    margin: 0;
+}
+.buttonColor {
+    border: solid 3px white;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    padding: 0.5em;
+    font-size: medium;
+    transition-duration: 600ms;
+}
+.buttonColor:hover {
+    padding: 0.7em;
+    font-size: large;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+}
+.contener {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

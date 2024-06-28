@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    background-color: black;
+    height: 100vh;
+  }
+  .neonStyle {
+    border: solid 3px var(--random-color-neon);
+    border-radius: 20px;
+    background-color: black;
+    color: var(--random-color-neon);
+    transition: all 1s ease;
+  }
+  .neonStyle:hover {
+    background-color: var(--random-color-neon);
+    color: black;
+    animation: blink 4s infinite linear;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      scale: 1;
+      box-shadow: 0 0 5px var(--random-color-neon),
+        0 0 10px var(--random-color-neon), 0 0 25px var(--random-color-neon),
+        0 0 50px var(--random-color-neon);
+    }
+    50% {
+      scale: 1.25;
+      box-shadow: 0 0 5px var(--random-color-neon-less),
+        0 0 10px var(--random-color-neon-less),
+        0 0 25px var(--random-color-neon-less),
+        0 0 50px var(--random-color-neon-less);
+    }
+  }
+  .component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }

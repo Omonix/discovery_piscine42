@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.colorButton {
+    border: solid 3px black;
+    border-radius: 20px;
+    color: black;
+    background-color: white;
+    padding: 0.5em;
+    font-size: medium;
+    transition-duration: 600ms;
+}
+.colorButton:hover {
+    padding: 0.7em;
+    font-size: large;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+}

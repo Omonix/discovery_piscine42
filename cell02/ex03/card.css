@@ -1,0 +1,90 @@
+.image {
+    width: 30%;
+}
+img {
+    border: solid 4px rgba(0, 0, 0, 0.6);
+    border-radius: 50px;
+    width: 95%;
+    cursor: pointer;
+    transition-duration: 600ms;
+}
+img:hover {
+    opacity: 65%;
+}
+td b,
+td p {
+    cursor: pointer;
+}
+.basic {
+    border: solid 3px black;
+    padding: 0.5em;
+    border-radius: 5em;
+    color: black;
+    background-color: white;
+    transition-duration: 600ms;
+}
+.basic:hover {
+    color: white;
+    background-color: black;
+}
+.name {
+    font-size: 2.25vw;
+}
+.login {
+    color: rgb(64, 64, 64);
+    font-size: 0.8vw;
+    border-bottom: solid 2.5px rgb(64, 64, 64);
+}
+.name,
+.login {
+    text-shadow: 2px 2px 4px rgb(58, 58, 58);
+    width: 20%;
+}
+.description {
+    font-size: 1vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.social {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.contact {
+    font-size: 2vw;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+.contact:hover {
+
+}
+table {
+    border: solid 3px black;
+    border-radius: 20px;
+}
+.ensembler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.space {
+    margin: 0 2%;
+}
+.imgSocial {
+    width: auto;
+    height: 3.5vh;
+    padding: 20%;
+    background-color: black;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.title {
+    font-size: 3vw;
+    border-bottom: solid 3px black;
+    text-align: center;
+}

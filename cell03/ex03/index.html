@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let button = document.querySelector(".creator");
+        let tabDo;
+        if (document.cookie) {
+          tabDo = JSON.parse(document.cookie.split("=")[1]);
+          for (let x = tabDo.length; x > 0; x--) {
+            const newDiv = document.createElement("div");
+            newDiv.innerHTML = tabDo[x - 1].name;
+            newDiv.className = "child";
+            newDiv.id = document.querySelectorAll(".child")[0]
+              ? parseInt(document.querySelectorAll(".child")[0].id) + 1
+              : 0;
+            document
+              .querySelector("#ft_list")
+              .insertBefore(newDiv, document.querySelectorAll(".child")[0]);
+          }
+        } else {
+          tabDo = [];
+        }
+        let red = Math.floor(Math.random() * 256);
+        let green = Math.floor(Math.random() * 256);
+        let blue = Math.floor(Math.random() * 256);
+        const color = `rgb(${red}, ${green}, ${blue})`;
+
+        document.body.style.setProperty("--random-color-neon", color);
+        document.body.style.setProperty(
+          "--random-color-neon-less",
+          `rgba(${red}, ${green}, ${blue}, 0.2)`
+        );
+
+        const ft_task = () => {
+          let sign = prompt("New element.");
+          const newDiv = document.createElement("div");
+          newDiv.innerHTML = sign.toLowerCase();
+          newDiv.className = "child";
+          newDiv.id = document.querySelectorAll(".child")[0]
+            ? parseInt(document.querySelectorAll(".child")[0].id) + 1
+            : 0;
+          document
+            .querySelector("#ft_list")
+            .insertBefore(newDiv, document.querySelectorAll(".child")[0]);
+          tabDo.unshift({
+            name: document.querySelectorAll(".child")[0].innerHTML,
+            id: document.querySelectorAll(".child")[0].id,
+          });
+          ft_canDeleteTask(document.querySelectorAll(".child")[0]);
+          ft_createCookie();
+        };
+        const ft_canDeleteTask = (e) => {
+          document.querySelector(".child").addEventListener("click", () => {
+            if (
+              confirm("Do you really want delete this task ? " + e.innerHTML)
+            ) {
+              e.remove();
+            }
+          });
+        };
+        const ft_createCookie = () => {
+          let cookies = JSON.stringify(tabDo);
+          document.cookie = "tab=" + cookies;
+        };
+
+        button.addEventListener("click", () => {
+          ft_task();
+        });
+        document.querySelector(".clear").addEventListener("click", () => {
+          document.cookie = "tab=[]";
+        });
+      });
+    </script>
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+        color: white;
+        height: 100vh;
+      }
+      .component {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .child {
+        padding: 0 7.5em;
+        margin: 0.5em;
+        border: solid 3px var(--random-color-neon);
+        border-radius: 20px;
+        color: var(--random-color-neon);
+        font-size: larger;
+        text-align: center;
+        transition: all 1s ease;
+      }
+      .child:hover {
+        color: black;
+        background-color: var(--random-color-neon);
+        animation: blink 4s infinite linear;
+      }
+      .buttonEdit {
+        margin: 0 0 1em 0;
+      }
+      .neonStyle {
+        border: solid 3px var(--random-color-neon);
+        border-radius: 20px;
+        padding: 0.25em;
+        background-color: black;
+        color: var(--random-color-neon);
+        transition: all 1s ease;
+      }
+      .neonStyle:hover {
+        background-color: var(--random-color-neon);
+        color: black;
+        animation: blink 4s infinite linear;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          scale: 1;
+          box-shadow: 0 0 5px var(--random-color-neon),
+            0 0 10px var(--random-color-neon), 0 0 25px var(--random-color-neon),
+            0 0 50px var(--random-color-neon);
+        }
+        50% {
+          scale: 1.25;
+          box-shadow: 0 0 5px var(--random-color-neon-less),
+            0 0 10px var(--random-color-neon-less),
+            0 0 25px var(--random-color-neon-less),
+            0 0 50px var(--random-color-neon-less);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="component">
+      <div class="buttonEdit">
+        <input class="creator neonStyle" type="button" value="New" />
+        <input class="clear neonStyle" type="button" value="Clear" />
+      </div>
+      <div id="ft_list"></div>
+    </div>
+  </body>
+</html>

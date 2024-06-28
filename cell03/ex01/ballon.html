@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballon</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      .ballon {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-radius: 50%;
+      }
+      .contener {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let ballon = document.querySelector(".ballon");
+        let tabColor = ["red", "green", "blue"];
+        ballon.style.backgroundColor = "red";
+
+        const addSize = (e) => {
+          let size = e.offsetWidth;
+          if (size === 420) {
+            e.style.width = 200 + "px";
+            e.style.height = 200 + "px";
+          } else {
+            size += 10;
+            e.style.width = size + "px";
+            e.style.height = size + "px";
+          }
+          return;
+        };
+        const addColor = (e) => {
+          let colorNum =
+            e.style.backgroundColor === "blue"
+              ? 0
+              : tabColor.indexOf(e.style.backgroundColor) + 1;
+          e.style.backgroundColor = tabColor[colorNum];
+          return;
+        };
+        const removeColor = (e) => {
+          let colorNum =
+            e.style.backgroundColor === "red"
+              ? 2
+              : tabColor.indexOf(e.style.backgroundColor) - 1;
+          e.style.backgroundColor = tabColor[colorNum];
+          return;
+        };
+        const removeSize = (e) => {
+          let size = e.offsetWidth;
+          if (size !== 200) {
+            size -= 10;
+            e.style.width = size + "px";
+            e.style.height = size + "px";
+          }
+          return;
+        };
+
+        ballon.addEventListener("click", () => {
+          addSize(ballon);
+          addColor(ballon);
+        });
+        ballon.addEventListener("mouseout", () => {
+          removeSize(ballon);
+          removeColor(ballon);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="contener">
+      <div class="ballon"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice</title>
+    <style>
+      body {
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+      .component {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      input[type="text"] {
+        border-radius: 20px;
+        border: solid 5px white;
+        color: white;
+        background-color: black;
+        padding: 0.3em 0 0.3em 0.8em;
+        margin: 0 2em;
+        font-size: medium;
+        transition-duration: 600ms;
+      }
+      input[type="text"]::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      input[type="text"]:hover::placeholder {
+        color: rgba(0, 0, 0, 0.6);
+      }
+      input[type="text"]:hover {
+        background-color: white;
+        color: black;
+      }
+      input[type="text"]:focus {
+        background-color: rgb(77, 77, 77);
+        outline: none;
+      }
+      .operator,
+      .button {
+        background-color: black;
+        border: solid 4px white;
+        border-radius: 20px;
+        padding: 0.5em;
+        color: white;
+        transition-duration: 600ms;
+        font-size: medium;
+      }
+      .operator:hover,
+      .button:hover {
+        background-color: white;
+        color: black;
+      }
+      .operator:focus,
+      .button:focus {
+        background-color: rgb(77, 77, 77);
+        outline: none;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let button = document.querySelector(".button");
+        document.querySelector(".numOne").focus();
+
+        const ft_calculate = (firstNum, operator, secondNum) => {
+          if (firstNum < 0 || secondNum < 0) {
+            alert("Error :(");
+          } else {
+            firstNum = parseInt(firstNum);
+            secondNum = parseInt(secondNum);
+            let result = 0;
+            if (operator === "plus") {
+              result = firstNum + secondNum;
+            } else if (operator === "less") {
+              result = firstNum - secondNum;
+            } else if (operator === "multi") {
+              result = firstNum * secondNum;
+            } else if (operator === "divi") {
+              result =
+                secondNum === 0 ? "It's over 9000!" : firstNum / secondNum;
+            } else {
+              result =
+                secondNum === 0 ? "It's over 9000!" : firstNum % secondNum;
+            }
+            console.log(result);
+            alert(result);
+          }
+          return;
+        };
+        setInterval(() => {
+          alert("Please, use me...");
+        }, "30000");
+
+        button.addEventListener("click", () => {
+          ft_calculate(
+            document.querySelector(".numOne").value,
+            document.querySelector(".operator").value,
+            document.querySelector(".numTwo").value
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="component">
+      <input class="numOne" type="text" placeholder="First" />
+      <select class="operator">
+        <option value="plus">+</option>
+        <option value="less">-</option>
+        <option value="multi">*</option>
+        <option value="divi">/</option>
+        <option value="rest">%</option>
+      </select>
+      <input class="numTwo" type="text" placeholder="Second" />
+      <input class="button" type="button" value="Try me !" />
+    </div>
+  </body>
+</html>

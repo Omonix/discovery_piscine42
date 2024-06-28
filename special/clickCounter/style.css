@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: var(--color);
+    width: 100vw;
+    height: 100vh;
+}
+.component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.buttonCounter {
+    padding: 8em;
+    border: solid 3px var(--color);
+    border-radius: 50px;
+    font-size: larger;
+    user-select: none;
+    transition: 200ms ease;
+}
+.buttonCounter:active {
+    scale: 1.8;
+}
+.count {
+    margin-bottom: 1.5em;
+    font-size: 6em;
+}
